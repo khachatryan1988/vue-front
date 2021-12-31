@@ -1,5 +1,5 @@
 <template>
-  <h1>HOMEEE</h1>
+  <h1>TCO User</h1>
 </template>
 
 <script>
