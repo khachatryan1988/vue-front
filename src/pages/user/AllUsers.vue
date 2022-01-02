@@ -8,19 +8,23 @@
             <table class="table">
               <thead>
               <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>ID</th>
+
               </tr>
               </thead>
               <tbody>
               <tr v-for="user in users">
-                <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
-                <td v-model="friend" name="target_user_id">{{user.id}}</td>
-                <div >
-                  <button @click="addFriend">Add friend</button>
-                </div>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+
+
+
+
+                </td>
               </tr>
               </tbody>
             </table>
@@ -33,11 +37,11 @@
 
 <script>
 import axios from "axios";
+
 export default {
   data: function () {
     return {
-      friend: '',
-      target_user_id: '',
+
       users: {
         name: '',
         email: '',
@@ -45,11 +49,13 @@ export default {
     }
   },
   mounted() {
-    this.getUsers()
-    this.addFriend()
+
+    this.getUsers();
   },
+
   methods: {
-    getUsers: function () {
+
+    getUsers() {
       return new Promise((resolve, reject) => {
         axios.get('/users')
           .then(res => {
@@ -62,24 +68,13 @@ export default {
             reject(error)
           })
       })
-    },
-    addFriend: function () {
-      return new Promise((resolve, reject) => {
-        axios.post('friend-request/send')
-          .then(res =>{
-            if (res.status === 200) {
-              this.target_user_id = res.data.user.id
-              resolve(true)
-            }
-          })
-          .catch(error => {
-            reject(error)
-          })
-      })
+
+
     }
   }
 }
 </script>
 
 <style scoped>
+
 </style>

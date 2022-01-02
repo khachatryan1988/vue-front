@@ -53,7 +53,7 @@ export default {
     },
     register_User(context, data) {
       return new Promise((resolve, reject) => {
-        axios.post('/register', data)
+        axios.post('auth/register', data)
           .then((res) => {
             if (res.status === 200) {
               resolve(res.data);
